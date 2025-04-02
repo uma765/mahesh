@@ -3,88 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahesh Kollu | Full Stack Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mahesh Kollu - Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
+    <header>
         <div class="container">
-            <div class="logo">MK</div>
+            <div class="profile">
+                <img src="images/profile.jpg" alt="Mahesh Kollu" class="profile-img">
+                <h1>Mahesh Kollu</h1>
+                <p>Full Stack Developer</p>
+            </div>
             <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                <ul>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Mahesh Kollu</h1>
-                <h2>Full Stack Developer</h2>
-                <p>Building scalable web applications with Java, PHP, and React.js</p>
-                <a href="#projects" class="btn">View My Work</a>
+    <main class="container">
+        <section id="about" class="section">
+            <h2>Professional Summary</h2>
+            <div class="summary">
+                <p>Full-stack developer with expertise in Java, PHP, and React.js, with 3+ years of experience in designing, developing, and deploying scalable web applications.</p>
+                <ul>
+                    <li>Proficient in backend technologies like Spring Boot, Hibernate, Laravel, and Node.js</li>
+                    <li>Skilled in frontend frameworks like React.js and Next.js</li>
+                    <li>Strong experience in SQL and NoSQL databases (MySQL, PostgreSQL, MongoDB)</li>
+                    <li>Cloud services expertise with AWS and GCP</li>
+                    <li>Passionate about clean code and best software engineering practices</li>
+                </ul>
             </div>
-            <div class="hero-image">
-                <img src="images/profile.jpg" alt="Mahesh Kollu">
+            <div class="education">
+                <h3>Education</h3>
+                <div class="education-item">
+                    <h4>St. Francis College</h4>
+                    <p>Master of Science in Information Technology</p>
+                    <p>Expected Dec 2024 | GPA: 3.6</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="images/project1.jpg" alt="E-Commerce Platform">
-                    <div class="project-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>React.js frontend with Spring Boot backend</p>
-                        <div class="tech-tags">
-                            <span>React</span>
-                            <span>Spring Boot</span>
-                            <span>AWS</span>
-                        </div>
+        <section id="experience" class="section">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-content">
+                        <h3>LTIMINDTREE – Full Stack Developer</h3>
+                        <p>Hyderabad, India</p>
+                        <ul>
+                            <li>Developed and maintained React.js-based frontend applications with Redux for state management</li>
+                            <li>Built and optimized Spring Boot microservices integrated with MySQL and MongoDB</li>
+                            <li>Designed and developed RESTful APIs and integrated them with frontend applications</li>
+                            <li>Improved application performance by 30% by implementing caching using Redis</li>
+                            <li>Worked with AWS services (EC2, S3, Lambda, RDS) for cloud-based application deployment</li>
+                        </ul>
                     </div>
                 </div>
-                <!-- Add more project cards -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-content">
+                        <h3>FXMKT Technologies – Mobile Application Developer (Backend)</h3>
+                        <ul>
+                            <li>Developed dynamic PHP web applications using Laravel</li>
+                            <li>Refactored legacy PHP applications, improving code quality and maintainability</li>
+                            <li>Implemented OAuth and JWT-based authentication for secure API access</li>
+                            <li>Designed and implemented AWS Lambda functions for serverless backend processes</li>
+                            <li>Wrote unit tests using JUnit (Java) and PHPUnit (PHP) to ensure code quality</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="experience-item">
-                <h3>Full Stack Developer at LTIMINDTREE</h3>
-                <p>Developed React.js applications with Redux state management</p>
-                <p>Built Spring Boot microservices with MySQL/MongoDB</p>
+        <section id="projects" class="section">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="images/ecommerce.jpg" alt="E-Commerce Platform">
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with React frontend and Spring Boot backend</p>
+                        <div class="tech-tags">
+                            <span>React.js</span>
+                            <span>Spring Boot</span>
+                            <span>MySQL</span>
+                            <span>AWS</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/healthcare.jpg" alt="Healthcare Management System">
+                    <div class="project-info">
+                        <h3>Healthcare Management System</h3>
+                        <p>Laravel-based system with AWS Lambda integration</p>
+                        <div class="tech-tags">
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                            <span>AWS Lambda</span>
+                            <span>JWT</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/taskapp.jpg" alt="Task Management Application">
+                    <div class="project-info">
+                        <h3>Task Management Application</h3>
+                        <p>Personal project built with Next.js and MongoDB</p>
+                        <div class="tech-tags">
+                            <span>Next.js</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>JWT</span>
+                        </div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> umamahesh.ksr@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +1 (316) 691-1007</p>
+        <section id="skills" class="section">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Java (Spring Boot, Hibernate)</li>
+                        <li>PHP (Laravel, CodeIgniter)</li>
+                        <li>Node.js</li>
+                        <li>RESTful APIs</li>
+                        <li>Microservices</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>React.js/Next.js</li>
+                        <li>Redux</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>TypeScript</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Database & DevOps</h3>
+                    <ul>
+                        <li>MySQL, PostgreSQL</li>
+                        <li>MongoDB, Redis</li>
+                        <li>AWS (EC2, S3, Lambda)</li>
+                        <li>Docker, Kubernetes</li>
+                        <li>CI/CD Pipelines</li>
+                    </ul>
+                </div>
             </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> umamahesh.ksr@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (316) 691-1007</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Texas, United States</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Mahesh Kollu. All rights reserved.</p>
         </div>
-    </section>
+    </footer>
 
     <script src="script.js"></script>
 </body>
