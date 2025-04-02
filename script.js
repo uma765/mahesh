@@ -1,41 +1,69 @@
-// Mobile menu toggle
-document.querySelector('.mobile-menu').addEventListener('click', function() {
-    document.querySelector('.nav-links').classList.toggle('show');
-});
-
-// Smooth scrolling with header offset
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         
-        const headerHeight = document.querySelector('header').offsetHeight;
-        const target = document.querySelector(this.getAttribute('href'));
-        const targetPosition = target.offsetTop - headerHeight;
-        
-        window.scrollTo({
-            top: targetPosition,
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
     });
 });
 
-// Highlight active nav link
+// Sticky header
 window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 0);
+});
+
+// Form submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const message = this.querySelector('textarea').value;
+        
+        // Here you would typically send the form data to a server
+        // For this example, we'll just log it and show an alert
+        console.log({ name, email, message });
+        alert('Thank you for your message! I will get back to you soon.');
+        
+        // Reset the form
+        this.reset();
+    });
+}
+
+// Project modal functionality (can be expanded)
+const projectButtons = document.querySelectorAll('.project-card .btn');
+projectButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        // In a real implementation, this would open a modal with more project details
+        alert('Project details would be shown here in a modal or separate page.');
+    });
+});
+
+// Active navigation highlighting
+const sections = document.querySelectorAll('.section');
+window.addEventListener('scroll', function() {
+    let current = '';
     
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
         
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-            const id = section.getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${id}`) {
-                    link.classList.add('active');
-                }
-            });
+        if (pageYOffset >= (sectionTop - 300)) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    document.querySelectorAll('nav ul li a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${current}`) {
+            a.classList.add('active');
         }
     });
 });
