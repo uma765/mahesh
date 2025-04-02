@@ -1,22 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation
+    // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navMenu = document.querySelector('nav ul');
     
     hamburger.addEventListener('click', function() {
         this.classList.toggle('active');
-        navLinks.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
     
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+            navMenu.classList.remove('active');
         });
     });
     
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -24,34 +24,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
             
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
     
-    // Navbar scroll effect
+    // Header scroll effect
+    const header = document.querySelector('header');
     window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('navbar');
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
         } else {
-            navbar.classList.remove('scrolled');
+            header.classList.remove('scrolled');
         }
     });
     
-    // Download Resume button
-    const downloadResumeBtn = document.getElementById('download-resume');
-    downloadResumeBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        alert('Resume download functionality would be implemented here. In a real implementation, this would download your resume PDF.');
-        // In a real implementation, you would link to your actual resume PDF
-        // window.open('path/to/your/resume.pdf', '_blank');
-    });
+    // Set current year in footer
+    const currentYear = new Date().getFullYear();
+    document.getElementById('current-year').textContent = currentYear;
     
     // Contact form submission
-    const contactForm = document.getElementById('contact-form');
+    const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -59,40 +56,75 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get form values
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
             // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
-            alert(`Thank you, ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            // For this example, we'll just log it and show an alert
+            console.log({ name, email, subject, message });
             
-            // Reset the form
+            alert('Thank you for your message! I will get back to you soon.');
             contactForm.reset();
         });
     }
     
-    // Animate elements when they come into view
+    // Download resume button
+    const downloadResume = document.getElementById('download-resume');
+    if (downloadResume) {
+        downloadResume.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Downloading resume...');
+            // In a real implementation, this would trigger a file download
+            // window.location.href = 'path/to/resume.pdf';
+        });
+    }
+    
+    // Animate elements when scrolling
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.timeline-item, .skills-category, .contact-item, .stat-item');
+        const elements = document.querySelectorAll('.timeline-item, .skill-category, .education-item');
         
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
+            const windowHeight = window.innerHeight;
             
-            if (elementPosition < screenPosition) {
+            if (elementPosition < windowHeight - 100) {
                 element.style.opacity = '1';
                 element.style.transform = 'translateY(0)';
             }
         });
     };
     
-    // Set initial styles for animation
-    document.querySelectorAll('.timeline-item, .skills-category, .contact-item, .stat-item').forEach(element => {
+    // Set initial state for animated elements
+    document.querySelectorAll('.timeline-item, .skill-category, .education-item').forEach(element => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(20px)';
+        element.style.transform = 'translateY(30px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
     
+    // Run animation check on load and scroll
+    window.addEventListener('load', animateOnScroll);
     window.addEventListener('scroll', animateOnScroll);
-    // Trigger once on load in case elements are already in view
-    animateOnScroll();
+    
+    // Typewriter effect for hero subtitle
+    const typewriter = function() {
+        const text = "Building scalable web applications with Java, PHP, and React.js";
+        const heroSubtitle = document.querySelector('.hero p');
+        
+        if (heroSubtitle) {
+            let i = 0;
+            heroSubtitle.textContent = '';
+            
+            const typing = setInterval(() => {
+                if (i < text.length) {
+                    heroSubtitle.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 50);
+        }
+    };
+    
+    // Start typewriter effect after a short delay
+    setTimeout(typewriter, 500);
 });
