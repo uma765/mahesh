@@ -1,17 +1,16 @@
-// Mobile Menu Toggle
+// Mobile menu toggle
 document.querySelector('.mobile-menu').addEventListener('click', function() {
-    document.querySelector('.nav-links').classList.toggle('active');
+    document.querySelector('.nav-links').classList.toggle('show');
 });
 
-// Smooth Scrolling with Offset
+// Smooth scrolling with header offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
         const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+        const target = document.querySelector(this.getAttribute('href'));
+        const targetPosition = target.offsetTop - headerHeight;
         
         window.scrollTo({
             top: targetPosition,
@@ -20,36 +19,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form Submission
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! I will get back to you soon.');
-        this.reset();
-    });
-}
-
-// Active Navigation Highlighting
+// Highlight active nav link
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
     
-    let current = '';
-    
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
         
-        if (pageYOffset >= (sectionTop - 150)) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            const id = section.getAttribute('id');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active');
+                }
+            });
         }
     });
 });
